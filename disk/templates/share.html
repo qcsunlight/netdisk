@@ -1,0 +1,29 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Share - {{ user }}</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+<body>
+    <h1 style="text-align:center"> 来自 {{ user }} 的分享</h1>
+    <hr>
+    <a href="/" style="float:right; margin-right: 50%;">回到自己的目录</a>
+    <a>分享链接:</a>
+    <a>{{ request.get_host }}{{ request.get_full_path }}</a>
+    <br><a>复制后发送给其他人即可分享此文件</a>
+    <br>
+    <hr>
+   <ul>
+   <li>
+    <p>{{ name }}
+        <a href="{% url 'file_down' user hash %}" style="margin-right: 50%;float:right">下载</a>    
+        <a style="margin-right: 50px;float:right">{{ size }}</a>
+    </p>
+   </li>
+   </ul>
+</body>
+</html>

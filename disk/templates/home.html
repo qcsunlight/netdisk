@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
+    <head>
+
+    </head>
     <body>
+        <h2>登录</h2>
         <form action="{% url 'user_login' %}" method="post">
             {% csrf_token %}
-            <input type="text", name="user">
-            <input type="password", name="pass">
-            <input type="submit", name="login">
+            <a>用户名：</a><input type="text", name="user">
+            <a>密码：</a><input type="password", name="pass">
+            <input type="submit", value="登录">
         </form>
-        <p>sign in</p>
+        <hr>
+        <h2>注册</h2>
         <form action="{% url 'user_sign' %}" method="post">
             {% csrf_token %}
-            <input type="text", name="user">
-            <input type="password", name="pass">
-            <input type="submit", name="sign in">
+            <a>用户名：</a><input type="text", name="user">
+            <a>密码：</a><input type="password", name="pass">
+            <input type="submit", value="注册">
         </form>
     </body>
 </html>

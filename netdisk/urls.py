@@ -22,8 +22,10 @@ urlpatterns = [
     url(r'^$', disk_view.home),
     url(r'^user/(?P<user>\w+)$', disk_view.file_list),
     url(r'^upload/$', disk_view.file_upload, name='file_up'),
-    url(r'^download/$', disk_view.file_down, name='file_down'),
+    url(r'^download/(?P<user>\w+)/(?P<fhash>\w{32})$', disk_view.file_down, name='file_down'),
     url(r'^login/$', disk_view.user_login, name='user_login'),
     url(r'^logout/$', disk_view.user_logout, name='user_logout'),
     url(r'^sign/$', disk_view.user_sign, name= 'user_sign'),
+    url(r'^delete/(?P<user>\w+)/(?P<fname>.*)', disk_view.file_del, name='file_del'),
+    url(r'^s/(?P<user>\w+)/(?P<fname>.*)/(?P<fhash>\w+)$', disk_view.file_share, name='file_share'),
 ]

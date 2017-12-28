@@ -9,9 +9,28 @@
     <script src="main.js"></script> -->
 </head>
 <body>
-    <h1>
-        login success!
-    </h1>
-    <a href="{% url 'user_logout' %}">logout</a>
+    <h1 style="text-align:center"> {{ request.user }} 的网络硬盘</h1>
+    <hr>
+   <h2>上传文件<span style="float:right;margin-right:50%"><a href="{% url 'user_logout' %}">退出登录</a></span></h2>
+   <form action="{% url 'file_up' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>选择文件:<input type="file" name="file">
+    <input type="submit" value="上传" style="margin-left: 100px;">
+    </p>
+   </form>
+   <hr>
+   <h2>文件列表</h2>
+   <ul>
+   {% for item in list %}
+   <li>
+    <p>{{ item.name }}
+        <a href="{% url 'file_share' request.user item.name item.hash %}" style="margin-right: 50%;float:right">分享</a>
+        <a href="{% url 'file_del' request.user item.name %}" style="margin-right: 50px;float:right">删除</a>
+        <a href="{% url 'file_down' request.user item.hash %}" style="margin-right: 50px;float:right">下载</a>        
+        <a style="margin-right: 50px;float:right">{{ item.size }}</a>
+    </p>
+   </li>
+   {% endfor %}
+   </ul>
 </body>
 </html>
