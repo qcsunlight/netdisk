@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from disk import views as disk_view
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    # url(r'^admin/', admin.site.urls),
+    url(r'^$', disk_view.home),
+    url(r'^user/(?P<user>\w+)$', disk_view.file_list),
+    url(r'^upload/$', disk_view.file_upload, name='file_up'),
+    url(r'^download/$', disk_view.file_down, name='file_down'),
+    url(r'^login/$', disk_view.user_login, name='user_login'),
+    url(r'^logout/$', disk_view.user_logout, name='user_logout'),
+    url(r'^sign/$', disk_view.user_sign, name= 'user_sign'),
 ]
